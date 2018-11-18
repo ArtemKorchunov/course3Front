@@ -1,6 +1,9 @@
 import { lazy } from "react";
 
-const Main = lazy(() => import("./Main"));
-const Login = lazy(() => import("./Login"));
+import Header from "./Header";
 
-export { Main, Login };
+const Device = lazy(() => import("./Device"));
+const Login = lazy(() => import("./Login"));
+const Register = lazy(() => import("./Register"));
+
+export { Device, Login, Register, Header };

@@ -3,7 +3,7 @@ import { Button } from "@material-ui/core";
 import { Formik, FastField } from "formik";
 import { CustomInput } from "../util/form";
 
-function LoginForm({ values, onSubmit }) {
+function RegisterForm({ values, onSubmit }) {
   return (
     <Formik
       initialValues={values}
@@ -11,6 +11,7 @@ function LoginForm({ values, onSubmit }) {
       render={props => {
         return (
           <form onSubmit={props.handleSubmit}>
+            <FastField label="Name" name="name" component={CustomInput} />
             <FastField
               label="Email"
               name="email"
@@ -19,6 +20,12 @@ function LoginForm({ values, onSubmit }) {
             />
             <FastField
               label="Password"
+              name="password"
+              type="password"
+              component={CustomInput}
+            />
+            <FastField
+              label="Confirm Password"
               name="password"
               type="password"
               component={CustomInput}
@@ -34,4 +41,4 @@ function LoginForm({ values, onSubmit }) {
   );
 }
 
-export default LoginForm;
+export default RegisterForm;

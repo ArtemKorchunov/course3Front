@@ -1,16 +1,23 @@
 import React from "react";
-import Paper from "@material-ui/core/Paper";
-
-import Form from "./Form";
+import { Paper, Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import "./Login.scss";
 
-function LoginView() {
+function LoginView({ formComponent }) {
   return (
-    <div className="container-wrap">
+    <div className="container-wrap login">
       <Paper className="container">
+        <Typography variant="h4" className="h4">
+          LOGIN
+        </Typography>
         <div className="content-wrap">
           <div className="content">
-            <Form />
+            {formComponent}
+            <div className="link-wrap link-wrap_center">
+              <Link to="/register" className="link link_bottom">
+                Or Sign Up!
+              </Link>
+            </div>
           </div>
         </div>
       </Paper>

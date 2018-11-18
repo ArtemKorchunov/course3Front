@@ -1,16 +1,15 @@
-import React, { Suspense, Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React, { Component } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import "typeface-roboto";
+
 import "./App.scss";
-import { Main, Login } from "./components";
+import Routes from "./Routes";
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Route path="/login" render={() => <Login />} />
-          <Route exact path="/" render={() => <Main />} />
-        </Suspense>
+        <Routes />
       </Router>
     );
   }

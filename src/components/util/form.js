@@ -21,3 +21,9 @@ export function CustomInput({
     </div>
   );
 }
+
+export function formErrorsWrap(errorHandler, errors) {
+  return typeof errors === "string"
+    ? errorHandler({ general: errors })
+    : errorHandler(errors);
+}
