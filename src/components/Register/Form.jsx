@@ -26,7 +26,7 @@ function RegisterForm({ values, onSubmit }) {
             />
             <FastField
               label="Confirm Password"
-              name="password"
+              name="confirm_password"
               type="password"
               component={CustomInput}
             />

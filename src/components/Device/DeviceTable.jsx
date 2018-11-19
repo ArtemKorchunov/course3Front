@@ -31,7 +31,7 @@ const rows = [
   }
 ];
 
-function DeviceTable({ classes }) {
+function DeviceTable({ classes, rows }) {
   return (
     <div className="table-wrap">
       <Table className={classes.table}>

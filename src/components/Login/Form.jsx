@@ -9,6 +9,7 @@ function LoginForm({ values, onSubmit }) {
       initialValues={values}
       onSubmit={onSubmit}
       render={props => {
+        console.log(props);
         return (
           <form onSubmit={props.handleSubmit}>
             <FastField
@@ -26,7 +27,7 @@ function LoginForm({ values, onSubmit }) {
             <Button variant="outlined" color="primary" type="submit">
               Submit
             </Button>
-            {props.errors.general && <div>props.errors.general</div>}
+            {props.errors.general && <div>{props.errors.general}</div>}
           </form>
         );
       }}

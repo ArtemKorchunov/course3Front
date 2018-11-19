@@ -22,8 +22,8 @@ export function CustomInput({
   );
 }
 
-export function formErrorsWrap(errorHandler, errors) {
-  return typeof errors === "string"
-    ? errorHandler({ general: errors })
-    : errorHandler(errors);
+export function formErrorsWrap(errorHandler, error) {
+  return typeof error.data === "string" || typeof error.data.data === "string"
+    ? errorHandler({ general: error.data || error.data.data })
+    : errorHandler(error.data.data);
 }

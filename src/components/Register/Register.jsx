@@ -6,13 +6,18 @@ import RegisterView from "./Register.view";
 import Form from "./Form";
 
 function Register({ history }) {
-  const [formValues] = useState({ email: "", password: "" });
+  const [formValues] = useState({
+    email: "",
+    password: "",
+    name: "",
+    confirm_password: ""
+  });
   async function onSubmit(values, { setErrors }) {
     try {
       await registerRequest(values);
       history.push("/login");
     } catch (err) {
-      formErrorsWrap(setErrors, err.reponse.data);
+      formErrorsWrap(setErrors, err);
     }
   }
 

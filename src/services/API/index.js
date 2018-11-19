@@ -2,7 +2,7 @@ import sendRequest from "./sendRequest";
 import { localStorageApi } from "../index";
 
 export function login(data) {
-  return sendRequest(`auth/login`, {
+  return sendRequest(`oauth/login`, {
     data: JSON.stringify(data)
   });
 }
@@ -14,7 +14,7 @@ export function register(data) {
 }
 
 export function refreshToken(refresh_token, token) {
-  return sendRequest(`auth`, {
+  return sendRequest(`oauth`, {
     method: "PUT",
     data: {
       refresh_token,
@@ -24,7 +24,12 @@ export function refreshToken(refresh_token, token) {
 }
 
 export const Device = {
-  get: sendRequest(`device`, {
-    method: "GET"
-  })
+  get() {
+    return sendRequest(`device`, {
+      method: "GET",
+      headers: {
+        Authorisation: `Bearer ${localStorageApi.getItem("token")}`
+      }
+    });
+  }
 };
