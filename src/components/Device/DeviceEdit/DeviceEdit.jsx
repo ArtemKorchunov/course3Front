@@ -6,8 +6,14 @@ import { formErrorsWrap } from "../../util/form";
 import DeviceDialog from "../DeviceDialog.view";
 import Form from "../Form";
 
-function DeviceEdit({ history }) {
-  const [deviceValues] = useState({ name: "", desciption: "", status: [] });
+function DeviceEdit({ history, match }) {
+  const [deviceValues, setDeviceValues] = useState({});
+  useMount(() => {
+    DeviceRequests.getById(match.params.id).then(res => {
+      const { status, id, ...other } = res.data.data;
+      setDeviceValues({ ...other, status: status ? ["active"] : [] });
+    });
+  });
   function onClose() {
     history.push("/device");
   }
@@ -28,7 +34,13 @@ function DeviceEdit({ history }) {
     <DeviceDialog
       onClose={onClose}
       formComponent={
-        <Form values={deviceValues} btnText="Edit Device" onSubmit={onSubmit} />
+        !!Object.keys(deviceValues).length && (
+          <Form
+            values={deviceValues}
+            btnText="Edit Device"
+            onSubmit={onSubmit}
+          />
+        )
       }
     />
   );

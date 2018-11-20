@@ -22,15 +22,6 @@ const styles = theme => ({
   }
 });
 
-const rows = [
-  {
-    id: 111,
-    name: "Toshiba v543",
-    description: "Fridge for restaurant",
-    status: "active"
-  }
-];
-
 function DeviceTable({ classes, rows, onEditBtnClick, onDeleteBtnClick }) {
   return (
     <div className="table-wrap">

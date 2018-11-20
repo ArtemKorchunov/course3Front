@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, MenuItem, IconButton } from "@material-ui/core";
-import { AccountCircle } from "@material-ui/icons";
 import MenuIcon from "@material-ui/icons/Menu";
 
+import { localStorageApi } from "../../services";
 import HeaderView from "./Header.view";
 
-function Header(props) {
+function Header({ history }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  function onLogout() {
+    localStorageApi.clear();
+    history.push("/login");
+  }
 
-  useEffect(
-    () => {
-      console.dir(anchorEl);
-    },
-    [anchorEl]
-  );
   return (
     <HeaderView
       menuIconComponent={
@@ -25,16 +24,6 @@ function Header(props) {
           onClick={({ target }) => setAnchorEl(target)}
         >
           <MenuIcon />
-        </IconButton>
-      }
-      accountIconComponent={
-        <IconButton
-          aria-owns={"menu-appbar"}
-          aria-haspopup="true"
-          color="inherit"
-          onClick={({ target }) => setAnchorEl(target)}
-        >
-          <AccountCircle />
         </IconButton>
       }
       accountComponent={
@@ -52,8 +41,13 @@ function Header(props) {
             horizontal: "right"
           }}
         >
-          <MenuItem>Profile</MenuItem>
-          <MenuItem>Log out</MenuItem>
+          <MenuItem>
+            <Link to="/device">Device</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/charts">Charts</Link>
+          </MenuItem>
+          <MenuItem onClick={onLogout}>Log out</MenuItem>
         </Menu>
       }
     />

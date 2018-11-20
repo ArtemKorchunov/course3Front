@@ -18,12 +18,7 @@ const styles = {
   }
 };
 
-function HeaderView({
-  classes,
-  accountComponent,
-  accountIconComponent,
-  menuIconComponent
-}) {
+function HeaderView({ classes, accountComponent, menuIconComponent }) {
   return (
     <AppBar position="static">
       <Toolbar>
@@ -31,10 +26,7 @@ function HeaderView({
         <Typography variant="h6" color="inherit" className={classes.grow}>
           Dashboard
         </Typography>
-        <div>
-          {accountIconComponent}
-          {accountComponent}
-        </div>
+        <div>{accountComponent}</div>
       </Toolbar>
     </AppBar>
   );

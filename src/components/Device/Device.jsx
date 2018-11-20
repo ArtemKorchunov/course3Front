@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useAsync, useMount } from "react-use";
 
 import { Device as DeviceRequests } from "../../services/API";
 import DeviceView from "./Device.view";
@@ -17,8 +16,11 @@ function Device({ history }) {
     },
     [history.location.pathname]
   );
-  function onDelete(id) {
+  async function onDelete(id) {
     setRows(rows.filter(item => item.id !== id));
+    try {
+      await DeviceRequests.delete(id);
+    } catch (err) {}
   }
   return (
     <DeviceView

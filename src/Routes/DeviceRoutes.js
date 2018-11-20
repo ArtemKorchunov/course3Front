@@ -6,7 +6,7 @@ import { Device, Header, DeviceAdd, DeviceEdit } from "../components";
 function DeviceRoutes() {
   return (
     <>
-      <Header />
+      <Route path="/" render={props => <Header {...props} />} />
       <Suspense fallback={<div>Loading...</div>}>
         <Route path="/device" render={props => <Device {...props} />} />
         <Route path="/device/add" component={DeviceAdd} />

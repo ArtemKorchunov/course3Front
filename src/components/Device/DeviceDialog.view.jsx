@@ -4,7 +4,7 @@ import { Dialog, Slide } from "@material-ui/core";
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
-function DeviceAddView({ formComponent, onClose }) {
+function DeviceAddView({ formComponent = null, onClose }) {
   return (
     <Dialog
       open

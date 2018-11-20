@@ -37,6 +37,14 @@ export const Device = {
       }
     });
   },
+  getById(id) {
+    return sendRequest(`device/${id}`, {
+      method: "GET",
+      headers: {
+        Authoriation: `Bearer ${localStorageApi.getItem("token")}`
+      }
+    });
+  },
   create(data) {
     return sendRequest(`device`, {
       method: "POST",
