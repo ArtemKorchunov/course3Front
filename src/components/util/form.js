@@ -1,5 +1,11 @@
 import React from "react";
-import { TextField } from "@material-ui/core";
+import {
+  TextField,
+  FormGroup,
+  FormControlLabel,
+  Checkbox as CheckboxCustom
+} from "@material-ui/core";
+import { Field } from "formik";
 
 export function CustomInput({
   field, // { name, value, onChange, onBlur }
@@ -19,6 +25,39 @@ export function CustomInput({
       {touched[field.name] &&
         errors[field.name] && <div className="error">{errors[field.name]}</div>}
     </div>
+  );
+}
+
+export function Checkbox(props) {
+  return (
+    <Field name={props.name}>
+      {({ field, form }) => (
+        <FormGroup row>
+          <FormControlLabel
+            control={
+              <CheckboxCustom
+                {...props}
+                checked={field.value.includes(props.value)}
+                onChange={() => {
+                  console.log(field);
+                  if (field.value.includes(props.value)) {
+                    const nextValue = field.value.filter(
+                      value => value !== props.value
+                    );
+                    form.setFieldValue(props.name, nextValue);
+                  } else {
+                    const nextValue = field.value.concat(props.value);
+                    form.setFieldValue(props.name, nextValue);
+                  }
+                }}
+                value={props.value}
+              />
+            }
+            label={props.label}
+          />
+        </FormGroup>
+      )}
+    </Field>
   );
 }
 

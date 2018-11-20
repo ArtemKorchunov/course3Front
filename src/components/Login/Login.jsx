@@ -19,7 +19,6 @@ function Login({ history }) {
       }
       history.push("/");
     } catch (err) {
-      console.dir(err);
       formErrorsWrap(setErrors, err);
     }
   }

@@ -23,12 +23,43 @@ export function refreshToken(refresh_token, token) {
   });
 }
 
+// Device CRUD
 export const Device = {
-  get() {
+  get(page = 0, count = 5) {
     return sendRequest(`device`, {
       method: "GET",
+      params: {
+        page,
+        count
+      },
       headers: {
-        Authorisation: `Bearer ${localStorageApi.getItem("token")}`
+        Authoriation: `Bearer ${localStorageApi.getItem("token")}`
+      }
+    });
+  },
+  create(data) {
+    return sendRequest(`device`, {
+      method: "POST",
+      data,
+      headers: {
+        Authoriation: `Bearer ${localStorageApi.getItem("token")}`
+      }
+    });
+  },
+  update(data, id) {
+    return sendRequest(`device/${id}`, {
+      method: "PUT",
+      data,
+      headers: {
+        Authoriation: `Bearer ${localStorageApi.getItem("token")}`
+      }
+    });
+  },
+  delete(id) {
+    return sendRequest(`device/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authoriation: `Bearer ${localStorageApi.getItem("token")}`
       }
     });
   }

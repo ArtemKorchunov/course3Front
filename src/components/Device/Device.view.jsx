@@ -2,7 +2,7 @@ import React from "react";
 import { Paper, Typography, Button } from "@material-ui/core";
 
 import "./Device.scss";
-function DeviceView({ deviceTableComponent }) {
+function DeviceView({ deviceTableComponent, onAddBtnClick }) {
   return (
     <div className="background device">
       <Paper className="device-content-bg">
@@ -11,7 +11,11 @@ function DeviceView({ deviceTableComponent }) {
             Devices
           </Typography>
           <div className="btn-wrap btn-wrap_align-center">
-            <Button variant="outlined" color="secondary">
+            <Button
+              variant="outlined"
+              color="secondary"
+              onClick={onAddBtnClick}
+            >
               Add Device
             </Button>
           </div>

@@ -9,7 +9,6 @@ function LoginForm({ values, onSubmit }) {
       initialValues={values}
       onSubmit={onSubmit}
       render={props => {
-        console.log(props);
         return (
           <form onSubmit={props.handleSubmit}>
             <FastField

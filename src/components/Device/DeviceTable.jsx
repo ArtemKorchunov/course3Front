@@ -31,7 +31,7 @@ const rows = [
   }
 ];
 
-function DeviceTable({ classes, rows }) {
+function DeviceTable({ classes, rows, onEditBtnClick, onDeleteBtnClick }) {
   return (
     <div className="table-wrap">
       <Table className={classes.table}>
@@ -51,9 +51,14 @@ function DeviceTable({ classes, rows }) {
                   {row.name}
                 </TableCell>
                 <TableCell>{row.description}</TableCell>
-                <TableCell>{row.status}</TableCell>
+                <TableCell>{row.status ? "active" : "non active"}</TableCell>
                 <TableCell numeric className="action-row">
-                  <Button mini variant="fab" aria-label="Edit">
+                  <Button
+                    mini
+                    variant="fab"
+                    aria-label="Edit"
+                    onClick={() => onDeleteBtnClick(row.id)}
+                  >
                     <Delete />
                   </Button>
                   <Button
@@ -62,6 +67,7 @@ function DeviceTable({ classes, rows }) {
                     color="secondary"
                     aria-label="Edit"
                     className="m-r-10"
+                    onClick={() => onEditBtnClick(row.id)}
                   >
                     <Edit />
                   </Button>
