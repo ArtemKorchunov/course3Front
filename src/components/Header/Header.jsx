@@ -45,7 +45,7 @@ function Header({ history }) {
             <Link to="/dashboard/device">Device</Link>
           </MenuItem>
           <MenuItem>
-            <Link to="/charts">Charts</Link>
+            <Link to="/dashboard/charts">Charts</Link>
           </MenuItem>
           <MenuItem onClick={onLogout}>Log out</MenuItem>
         </Menu>
