@@ -15,17 +15,20 @@ function DeviceEdit({ history, match }) {
     });
   });
   function onClose() {
-    history.push("/device");
+    history.push("/dashboard/device");
   }
   async function onSubmit(values, { setErrors }) {
     try {
       const { status, ...other } = values;
-      await DeviceRequests.update({
-        ...other,
-        status: status.length ? true : false,
-        charts: [1]
-      });
-      history.push("/device");
+      await DeviceRequests.update(
+        {
+          ...other,
+          status: status.length ? true : false,
+          charts: [1]
+        },
+        match.params.id
+      );
+      history.push("/dashboard/device");
     } catch (err) {
       formErrorsWrap(setErrors, err);
     }

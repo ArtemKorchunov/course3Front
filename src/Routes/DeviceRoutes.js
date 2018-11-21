@@ -1,18 +1,15 @@
 import React, { Suspense } from "react";
 import { Route } from "react-router-dom";
 
-import { Device, Header, DeviceAdd, DeviceEdit } from "../components";
+import { Device, DeviceAdd, DeviceEdit } from "../components";
 
 function DeviceRoutes() {
   return (
-    <>
-      <Route path="/" render={props => <Header {...props} />} />
-      <Suspense fallback={<div>Loading...</div>}>
-        <Route path="/device" render={props => <Device {...props} />} />
-        <Route path="/device/add" component={DeviceAdd} />
-        <Route path="/device/edit/:id" component={DeviceEdit} />
-      </Suspense>
-    </>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Route path="/dashboard/device" render={props => <Device {...props} />} />
+      <Route path="/dashboard/device/add" component={DeviceAdd} />
+      <Route path="/dashboard/device/edit/:id" component={DeviceEdit} />
+    </Suspense>
   );
 }
 

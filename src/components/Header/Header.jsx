@@ -42,7 +42,7 @@ function Header({ history }) {
           }}
         >
           <MenuItem>
-            <Link to="/device">Device</Link>
+            <Link to="/dashboard/device">Device</Link>
           </MenuItem>
           <MenuItem>
             <Link to="/charts">Charts</Link>

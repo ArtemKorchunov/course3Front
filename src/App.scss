@@ -38,3 +38,22 @@ body {
 .m-r-10 {
   margin-right: 10px !important;
 }
+
+.headline_padding {
+  padding: 10px 15px;
+}
+
+.device-content-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.background.device {
+  padding: 35px;
+  background: rgba(74, 99, 238, 0.7);
+  height: calc(100vh - 134px);
+}
+
+.device-content-bg {
+  height: 100%;
+}

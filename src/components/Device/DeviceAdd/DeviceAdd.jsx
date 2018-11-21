@@ -8,7 +8,7 @@ import Form from "../Form";
 function DeviceAdd({ history }) {
   const [deviceValues] = useState({ name: "", description: "", status: [] });
   function onClose() {
-    history.push("/device");
+    history.push("/dashboard/device");
   }
   async function onSubmit(values, { setErrors }) {
     try {
@@ -18,7 +18,7 @@ function DeviceAdd({ history }) {
         status: status.length ? true : false,
         charts: [1]
       });
-      history.push("/device");
+      history.push("/dashboard/device");
     } catch (err) {
       formErrorsWrap(setErrors, err);
     }

@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 
-import DeviceRoutes from "./DeviceRoutes";
+import DashboardRoutes from "./DashboardRoutes";
 import { Login, Register } from "../components";
 
 function AppRoutes() {
@@ -10,8 +10,8 @@ function AppRoutes() {
       <Switch>
         <Route path="/login" render={props => <Login {...props} />} />
         <Route path="/register" render={props => <Register {...props} />} />
-        <Route path="/device" component={DeviceRoutes} />
-        <Redirect exact from="/" to="/device" />
+        <Route path="/dashboard" component={DashboardRoutes} />
+        <Redirect exact from="/" to="/dashboard/device" />
       </Switch>
     </Suspense>
   );

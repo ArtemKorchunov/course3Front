@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { Button } from "@material-ui/core";
 
 import { Device as DeviceRequests } from "../../services/API";
-import DeviceView from "./Device.view";
+import DashboardWrap from "../DashboardWrap";
 import DeviceTable from "./DeviceTable";
+import "./Device.scss";
 
 function Device({ history }) {
   const [rows, setRows] = useState([]);
   useEffect(
     () => {
-      if (history.location.pathname === "/device") {
+      if (history.location.pathname === "/dashboard/device") {
         DeviceRequests.get().then(res => {
           setRows(res.data.data);
         });
@@ -23,15 +25,26 @@ function Device({ history }) {
     } catch (err) {}
   }
   return (
-    <DeviceView
-      deviceTableComponent={
+    <DashboardWrap
+      headlineTitle="Device"
+      contentComponent={
         <DeviceTable
           rows={rows}
-          onEditBtnClick={id => history.push(`/device/edit/${id}`)}
+          onEditBtnClick={id => history.push(`/dashboard/device/edit/${id}`)}
           onDeleteBtnClick={onDelete}
         />
       }
-      onAddBtnClick={() => history.push("/device/add")}
+      headlineComponent={
+        <div className="btn-wrap btn-wrap_align-center">
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={() => history.push("/dashboard/device/add")}
+          >
+            Add Device
+          </Button>
+        </div>
+      }
     />
   );
 }
