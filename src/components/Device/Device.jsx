@@ -38,7 +38,7 @@ function Device({ history }) {
             color="secondary"
             onClick={() => history.push("/dashboard/device/add")}
           >
-            Add Device
+            {<Trans>Add Device</Trans>}
           </Button>
         </div>
       }

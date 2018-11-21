@@ -27,7 +27,11 @@ function DeviceForm({ values, onSubmit, btnText }) {
                 rowsMax="4"
                 component={CustomInput}
               />
-              <Checkbox name="status" value="active" label="Status is Active" />
+              <Checkbox
+                name="status"
+                value="active"
+                label={<Trans>Status is Active</Trans>}
+              />
               <div className="btn-wrap btn-wrap__center">
                 <Button
                   variant="outlined"

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Trans } from "react-i18next";
 import { Device as DeviceRequests } from "../../../services/API";
 import { formErrorsWrap } from "../../util/form";
 import DeviceDialog from "../DeviceDialog.view";
@@ -27,7 +27,11 @@ function DeviceAdd({ history }) {
     <DeviceDialog
       onClose={onClose}
       formComponent={
-        <Form values={deviceValues} btnText="Add Device" onSubmit={onSubmit} />
+        <Form
+          values={deviceValues}
+          btnText={<Trans>Add Device</Trans>}
+          onSubmit={onSubmit}
+        />
       }
     />
   );

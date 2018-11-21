@@ -16,12 +16,15 @@ i18n.use(LanguageDetector).init({
         "Or Sign Up!": "Or Sign Up!",
         Device: "Device",
         Charts: "Charts",
+        Chart: "Chart",
+        "Add Device": "Add Device",
         "Log out": "Log out",
         Dashboard: "Dashboard",
         Name: "Name",
         Description: "Description",
         Status: "Status",
-        "Select item to see Chart.": "Select item to see Chart."
+        "Select item to see Chart.": "Select item to see Chart.",
+        "Status is Active": "Status is Active"
       }
     },
     uk: {
@@ -33,7 +36,18 @@ i18n.use(LanguageDetector).init({
         Register: "Регістрація",
         "Or Sign In!": "Або залогінтесь!",
         "Confirm Password": "Підтвердити пароль",
-        "Or Sign Up!": "Або зарегеструйтеся"
+        "Or Sign Up!": "Або зареєструйтеся",
+        Device: "Девайс",
+        "Add Device": "Додати девайс",
+        Charts: "Графіки",
+        Chart: "Графік",
+        "Log out": "Вийти",
+        Dashboard: "Панель приладів",
+        Name: "Ім'я",
+        Description: "Опис",
+        Status: "Статус",
+        "Select item to see Chart.": "Виберіть пункт, щоб побачити Діаграму.",
+        "Status is Active": "Статус активний"
       }
     }
   },
