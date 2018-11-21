@@ -12,6 +12,7 @@ function Header({ history }) {
   function onLogout() {
     localStorageApi.clear();
     history.push("/login");
+    setAnchorEl(null);
   }
 
   return (

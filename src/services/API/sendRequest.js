@@ -1,25 +1,29 @@
 import axios from "axios";
 import getRootUrl from "./getRootUrl";
 import { localStorageApi } from "../index";
-import { refreshToken } from "./index";
+import { refreshToken as refreshTokenRequest } from "./index";
 
 async function sendRequest(path, opts = {}) {
   const headers = Object.assign({}, opts.headers || {}, {
-    "Content-type": "application/json; charset=UTF-8",
-    Authorization: `Bearer ${localStorageApi.getItem()}`
+    "Content-type": "application/json; charset=UTF-8"
   });
-
   //Check for valid token
-  if (headers["access-token"]) {
-    const refresh_token = localStorageApi.getItem("refresh_token");
-    const expires = +localStorageApi.getItem("expires_in");
-    if (expires - Date.now() < 600000) {
+  if (headers["Authorization"]) {
+    const refresh_token = localStorageApi.getItem("refreshToken");
+    const expires = +localStorageApi.getItem("expiresIn");
+    if (expires - Date.now() < 60000) {
       const {
-        data: { token, expires_in }
-      } = await refreshToken(refresh_token, headers["access-token"]);
-      localStorageApi.setItem("expires_in", expires_in);
+        data: {
+          data: { token, expiresIn, refreshToken }
+        }
+      } = await refreshTokenRequest(
+        refresh_token,
+        localStorageApi.getItem("token")
+      );
+      localStorageApi.setItem("expiresIn", expiresIn);
       localStorageApi.setItem("token", token);
-      headers["access-token"] = token;
+      localStorageApi.setItem("refreshToken", refreshToken);
+      headers["Authorization"] = `Bearer ${token}`;
     }
   }
 

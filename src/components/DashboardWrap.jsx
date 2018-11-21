@@ -14,7 +14,7 @@ function DeviceView({
         </Typography>
         {headlineComponent}
       </div>
-      {contentComponent}
+      <div className="content-wrap">{contentComponent}</div>
     </>
   );
 }

@@ -13,11 +13,11 @@ export function register(data) {
   });
 }
 
-export function refreshToken(refresh_token, token) {
-  return sendRequest(`oauth`, {
+export function refreshToken(refreshToken, token) {
+  return sendRequest(`oauth/token`, {
     method: "PUT",
     data: {
-      refresh_token,
+      refreshToken,
       token
     }
   });
@@ -33,7 +33,7 @@ export const Device = {
         count
       },
       headers: {
-        Authoriation: `Bearer ${localStorageApi.getItem("token")}`
+        Authorization: `Bearer ${localStorageApi.getItem("token")}`
       }
     });
   },
@@ -41,7 +41,7 @@ export const Device = {
     return sendRequest(`device/${id}`, {
       method: "GET",
       headers: {
-        Authoriation: `Bearer ${localStorageApi.getItem("token")}`
+        Authorization: `Bearer ${localStorageApi.getItem("token")}`
       }
     });
   },
@@ -50,7 +50,7 @@ export const Device = {
       method: "POST",
       data,
       headers: {
-        Authoriation: `Bearer ${localStorageApi.getItem("token")}`
+        Authorization: `Bearer ${localStorageApi.getItem("token")}`
       }
     });
   },
@@ -59,7 +59,7 @@ export const Device = {
       method: "PUT",
       data,
       headers: {
-        Authoriation: `Bearer ${localStorageApi.getItem("token")}`
+        Authorization: `Bearer ${localStorageApi.getItem("token")}`
       }
     });
   },
@@ -67,7 +67,7 @@ export const Device = {
     return sendRequest(`device/${id}`, {
       method: "DELETE",
       headers: {
-        Authoriation: `Bearer ${localStorageApi.getItem("token")}`
+        Authorization: `Bearer ${localStorageApi.getItem("token")}`
       }
     });
   }

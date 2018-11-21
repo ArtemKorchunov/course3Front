@@ -1,4 +1,5 @@
 import React from "react";
+import { Trans } from "react-i18next";
 import { Button } from "@material-ui/core";
 import { Formik, FastField } from "formik";
 import { CustomInput } from "../util/form";
@@ -13,25 +14,25 @@ function RegisterForm({ values, onSubmit }) {
           <form onSubmit={props.handleSubmit}>
             <FastField label="Name" name="name" component={CustomInput} />
             <FastField
-              label="Email"
+              label={<Trans>Email</Trans>}
               name="email"
               type="email"
               component={CustomInput}
             />
             <FastField
-              label="Password"
+              label={<Trans>Password</Trans>}
               name="password"
               type="password"
               component={CustomInput}
             />
             <FastField
-              label="Confirm Password"
+              label={<Trans>Confirm Password</Trans>}
               name="confirm_password"
               type="password"
               component={CustomInput}
             />
             <Button variant="outlined" color="primary" type="submit">
-              Submit
+              <Trans>Submit</Trans>
             </Button>
             {props.errors.general && <div>props.errors.general</div>}
           </form>

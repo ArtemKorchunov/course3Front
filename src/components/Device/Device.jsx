@@ -8,16 +8,13 @@ import "./Device.scss";
 
 function Device({ history }) {
   const [rows, setRows] = useState([]);
-  useEffect(
-    () => {
-      if (history.location.pathname === "/dashboard/device") {
-        DeviceRequests.get().then(res => {
-          setRows(res.data.data);
-        });
-      }
-    },
-    [history.location.pathname]
-  );
+  useEffect(() => {
+    if (history.location.pathname === "/dashboard/device") {
+      DeviceRequests.get().then(res => {
+        setRows(res.data.data);
+      });
+    }
+  }, []);
   async function onDelete(id) {
     setRows(rows.filter(item => item.id !== id));
     try {
