@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Trans } from "react-i18next";
 import { withStyles } from "@material-ui/core/styles";
 import {
   Table,
@@ -28,9 +28,15 @@ function DeviceTable({ classes, rows, onEditBtnClick, onDeleteBtnClick }) {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Description</TableCell>
-            <TableCell>Status</TableCell>
+            <TableCell>
+              <Trans>Name</Trans>
+            </TableCell>
+            <TableCell>
+              <Trans>Description</Trans>
+            </TableCell>
+            <TableCell>
+              <Trans>Status</Trans>
+            </TableCell>
             <TableCell numeric />
           </TableRow>
         </TableHead>

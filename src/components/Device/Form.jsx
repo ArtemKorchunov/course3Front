@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@material-ui/core";
+import { Trans } from "react-i18next";
 import { Formik, FastField } from "formik";
 import { CustomInput, Checkbox } from "../util/form";
 
@@ -13,13 +14,13 @@ function DeviceForm({ values, onSubmit, btnText }) {
           return (
             <form onSubmit={props.handleSubmit}>
               <FastField
-                label="Name"
+                label={<Trans>Name</Trans>}
                 name="name"
                 type="text"
                 component={CustomInput}
               />
               <FastField
-                label="Desciption"
+                label={<Trans>Description</Trans>}
                 name="description"
                 type="textarea"
                 multiline

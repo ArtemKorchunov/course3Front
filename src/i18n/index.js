@@ -13,7 +13,15 @@ i18n.use(LanguageDetector).init({
         Register: "Register",
         "Or Sign In!": "Or Sign In!",
         "Confirm Password": "Confirm Password",
-        "Or Sign Up!": "Or Sign Up!"
+        "Or Sign Up!": "Or Sign Up!",
+        Device: "Device",
+        Charts: "Charts",
+        "Log out": "Log out",
+        Dashboard: "Dashboard",
+        Name: "Name",
+        Description: "Description",
+        Status: "Status",
+        "Select item to see Chart.": "Select item to see Chart."
       }
     },
     uk: {

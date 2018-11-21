@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
-
+import { Trans } from "react-i18next";
 import RTChart from "react-rt-chart";
 
 import { useAsync } from "react-use";
@@ -52,11 +52,13 @@ function Chart({ history }) {
   );
   return (
     <DashboardWrap
-      headlineTitle="Chart"
+      headlineTitle={<Trans>Chart</Trans>}
       contentComponent={
         !pickedSuggest.value ? (
           <div className="content-wrap content-wrap__title content-wrap__center">
-            <span className="title-overlay">Select item to see Chart.</span>
+            <span className="title-overlay">
+              <Trans>Select item to see Chart.</Trans>
+            </span>
           </div>
         ) : (
           <RTChart fields={["Chart"]} data={message} />

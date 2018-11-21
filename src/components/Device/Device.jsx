@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
-
+import { Trans } from "react-i18next";
 import { Device as DeviceRequests } from "../../services/API";
 import DashboardWrap from "../DashboardWrap";
 import DeviceTable from "./DeviceTable";
@@ -23,7 +23,7 @@ function Device({ history }) {
   }
   return (
     <DashboardWrap
-      headlineTitle="Device"
+      headlineTitle={<Trans>Device</Trans>}
       contentComponent={
         <DeviceTable
           rows={rows}

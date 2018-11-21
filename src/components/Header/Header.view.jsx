@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Trans } from "react-i18next";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -24,7 +24,7 @@ function HeaderView({ classes, accountComponent, menuIconComponent }) {
       <Toolbar>
         {menuIconComponent}
         <Typography variant="h6" color="inherit" className={classes.grow}>
-          Dashboard
+          <Trans>Dashboard</Trans>
         </Typography>
         <div>{accountComponent}</div>
       </Toolbar>

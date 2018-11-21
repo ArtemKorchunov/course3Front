@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Trans } from "react-i18next";
 import { Menu, MenuItem, IconButton } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
@@ -43,12 +44,18 @@ function Header({ history }) {
           }}
         >
           <MenuItem>
-            <Link to="/dashboard/device">Device</Link>
+            <Link to="/dashboard/device">
+              <Trans>Device</Trans>
+            </Link>
           </MenuItem>
           <MenuItem>
-            <Link to="/dashboard/charts">Charts</Link>
+            <Link to="/dashboard/charts">
+              <Trans>Charts</Trans>
+            </Link>
           </MenuItem>
-          <MenuItem onClick={onLogout}>Log out</MenuItem>
+          <MenuItem onClick={onLogout}>
+            <Trans>Log out</Trans>
+          </MenuItem>
         </Menu>
       }
     />
