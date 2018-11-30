@@ -3,30 +3,22 @@ import Select from "react-select";
 import { Trans } from "react-i18next";
 import RTChart from "react-rt-chart";
 
-import { useAsync } from "react-use";
 import Sockette from "sockette";
 import { Device } from "../../services/API";
+import { useAsyncFilterResp } from "../hooks";
 import DashboardWrap from "../DashboardWrap";
-import "./Chart.scss";
+import "./LiveChart.scss";
 
-function Chart({ history }) {
+function LiveChart({ history }) {
   let ws = { close: () => {} };
-  const { loading, value } = useAsync(Device.get);
-  const [options, setOptions] = useState([]);
+  const [options, loading] = useAsyncFilterResp(Device.get, [], value =>
+    value.data.data.map(item => ({
+      value: item.id,
+      label: item.name
+    }))
+  );
   const [pickedSuggest, setPickedSuggest] = useState({ value: null });
   const [message, setMessage] = useState(null);
-  useEffect(
-    () => {
-      if (!value) return;
-      setOptions(
-        value.data.data.map(item => ({
-          value: item.id,
-          label: item.name
-        }))
-      );
-    },
-    [loading]
-  );
   useEffect(
     () => {
       if (pickedSuggest.value) {
@@ -34,17 +26,17 @@ function Chart({ history }) {
           `${process.env.REACT_APP_WS_URL}/device/${pickedSuggest.value}`,
           {
             onmessage: e => {
-              console.log(e);
+              const data = JSON.parse(e.data);
               setMessage({
                 date: new Date(),
-                Chart: +e.data
+                Chart: +data.heat,
+                Stability: data.prediction.pop()
               });
             }
           }
         );
       }
       return function cleanup() {
-        console.log("cleanup");
         ws.close(1000);
       };
     },
@@ -52,16 +44,16 @@ function Chart({ history }) {
   );
   return (
     <DashboardWrap
-      headlineTitle={<Trans>Chart</Trans>}
+      headlineTitle={<Trans>Live Chart</Trans>}
       contentComponent={
         !pickedSuggest.value ? (
           <div className="content-wrap content-wrap__title content-wrap__center">
             <span className="title-overlay">
-              <Trans>Select item to see Chart.</Trans>
+              <Trans>Select item to see Live Chart.</Trans>
             </span>
           </div>
         ) : (
-          <RTChart fields={["Chart"]} data={message} />
+          <RTChart fields={["Chart", "Stability"]} data={message} />
         )
       }
       headlineComponent={
@@ -70,10 +62,11 @@ function Chart({ history }) {
             value={pickedSuggest}
             onChange={selectedOption => setPickedSuggest({ ...selectedOption })}
             options={options}
+            isLoading={loading}
           />
         </div>
       }
     />
   );
 }
-export default Chart;
+export default LiveChart;

@@ -11,6 +11,7 @@ i18n.use(LanguageDetector).init({
         Email: "Email",
         Password: "Password",
         Register: "Register",
+        "Live Chart": "Live Chart",
         "Or Sign In!": "Or Sign In!",
         "Confirm Password": "Confirm Password",
         "Or Sign Up!": "Or Sign Up!",
@@ -23,7 +24,7 @@ i18n.use(LanguageDetector).init({
         Name: "Name",
         Description: "Description",
         Status: "Status",
-        "Select item to see Chart.": "Select item to see Chart.",
+        "Select item to see Live Chart.": "Select item to see Chart.",
         "Status is Active": "Status is Active"
       }
     },
@@ -34,6 +35,7 @@ i18n.use(LanguageDetector).init({
         Email: "Пошта",
         Password: "Пароль",
         Register: "Регістрація",
+        "Live Chart": "Графік у реальному часі",
         "Or Sign In!": "Або залогінтесь!",
         "Confirm Password": "Підтвердити пароль",
         "Or Sign Up!": "Або зареєструйтеся",
@@ -46,7 +48,8 @@ i18n.use(LanguageDetector).init({
         Name: "Ім'я",
         Description: "Опис",
         Status: "Статус",
-        "Select item to see Chart.": "Виберіть пункт, щоб побачити Діаграму.",
+        "Select item to see Live Chart.":
+          "Виберіть пункт, щоб побачити Діаграму.",
         "Status is Active": "Статус активний"
       }
     }

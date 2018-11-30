@@ -13,7 +13,7 @@ function DashboardRoutes() {
       <div className="background device">
         <Paper className="device-content-bg">
           <Route path="/dashboard/device" component={DeviceRoutes} />
-          <Route path="/dashboard/charts" component={ChartRoutes} />
+          <Route path="/dashboard/live-chart" component={ChartRoutes} />
         </Paper>
       </div>
     </>

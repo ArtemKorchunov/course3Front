@@ -49,8 +49,8 @@ function Header({ history }) {
             </Link>
           </MenuItem>
           <MenuItem>
-            <Link to="/dashboard/charts">
-              <Trans>Charts</Trans>
+            <Link to="/dashboard/live-chart">
+              <Trans>Live Chart</Trans>
             </Link>
           </MenuItem>
           <MenuItem onClick={onLogout}>

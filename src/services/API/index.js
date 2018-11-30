@@ -72,3 +72,14 @@ export const Device = {
     });
   }
 };
+
+export const Chart = {
+  get() {
+    return sendRequest(`chart`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorageApi.getItem("token")}`
+      }
+    });
+  }
+};
