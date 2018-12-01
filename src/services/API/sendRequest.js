@@ -11,7 +11,7 @@ async function sendRequest(path, opts = {}) {
   if (headers["Authorization"]) {
     const refresh_token = localStorageApi.getItem("refreshToken");
     const expires = +localStorageApi.getItem("expiresIn");
-    if (expires - Date.now() < 60000) {
+    if (expires * 1000 - Date.now() < 60000) {
       const {
         data: {
           data: { token, expiresIn, refreshToken }

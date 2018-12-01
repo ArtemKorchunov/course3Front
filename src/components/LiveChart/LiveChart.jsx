@@ -3,14 +3,14 @@ import Select from "react-select";
 import { Trans } from "react-i18next";
 import RTChart from "react-rt-chart";
 
-import Sockette from "sockette";
 import { Device } from "../../services/API";
-import { useAsyncFilterResp } from "../hooks";
+import { localStorageApi } from "../../services";
+
+import { useAsyncFilterResp, useSocketConnect } from "../hooks";
 import DashboardWrap from "../DashboardWrap";
 import "./LiveChart.scss";
 
 function LiveChart({ history }) {
-  let ws = { close: () => {} };
   const [options, loading] = useAsyncFilterResp(Device.get, [], value =>
     value.data.data.map(item => ({
       value: item.id,
@@ -18,29 +18,13 @@ function LiveChart({ history }) {
     }))
   );
   const [pickedSuggest, setPickedSuggest] = useState({ value: null });
-  const [message, setMessage] = useState(null);
-  useEffect(
-    () => {
-      if (pickedSuggest.value) {
-        ws = new Sockette(
-          `${process.env.REACT_APP_WS_URL}/device/${pickedSuggest.value}`,
-          {
-            onmessage: e => {
-              const data = JSON.parse(e.data);
-              setMessage({
-                date: new Date(),
-                Chart: +data.heat,
-                Stability: data.prediction.pop()
-              });
-            }
-          }
-        );
-      }
-      return function cleanup() {
-        ws.close(1000);
-      };
-    },
-    [pickedSuggest.value]
+  const message = useSocketConnect(
+    `http://localhost:4000/device?token=${localStorageApi.getItem()}&device=${
+      pickedSuggest.value
+    }
+    }`,
+    "/listen",
+    pickedSuggest.value
   );
   return (
     <DashboardWrap
