@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Select from "react-select";
 import { Trans } from "react-i18next";
 import RTChart from "react-rt-chart";
 
-import { Device } from "../../services/API";
-import { localStorageApi } from "../../services";
+import { Device } from "../../../services/API";
+import { localStorageApi } from "../../../services";
 
-import { useAsyncFilterResp, useSocketConnect } from "../hooks";
-import DashboardWrap from "../DashboardWrap";
+import { useAsyncFilterResp, useSocketConnect } from "../../hooks";
+import DashboardWrap from "../../DashboardWrap";
 import "./LiveChart.scss";
 
-function LiveChart({ history }) {
+function LiveChart() {
   const [options, loading] = useAsyncFilterResp(Device.get, [], value =>
     value.data.data.map(item => ({
       value: item.id,

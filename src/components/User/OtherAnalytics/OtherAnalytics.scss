@@ -1,0 +1,21 @@
+.analytics__wrap {
+  display: flex;
+  justify-content: space-around;
+  overflow: scroll;
+  height: inherit;
+  align-items: center;
+  padding-right: 20px;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
+  .analytic-item__wrap {
+    width: 100%;
+    max-width: 1000px;
+    height: 100%;
+    position: relative;
+    padding-bottom: 50px;
+    &.horizontal-bar {
+      max-width: 600px;
+    }
+  }
+}

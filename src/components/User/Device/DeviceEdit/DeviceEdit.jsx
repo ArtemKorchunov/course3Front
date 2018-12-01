@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useMount } from "react-use";
 
-import { Device as DeviceRequests } from "../../../services/API";
-import { formErrorsWrap } from "../../util/form";
+import { Device as DeviceRequests } from "services/API";
+import { formErrorsWrap } from "components/util/form";
 import DeviceDialog from "../DeviceDialog.view";
 import Form from "../Form";
 

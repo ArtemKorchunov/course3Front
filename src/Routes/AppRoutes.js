@@ -3,9 +3,15 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import { translate } from "react-i18next";
 
 import DashboardRoutes from "./DashboardRoutes";
+import AdminRoutes from "./AdminRoutes";
 import { Login, Register } from "../components";
 
-function AppRoutes({ i18n }) {
+//Route types
+import UserRoute from "./RouteTypes/UserRoute";
+import AdminRoute from "./RouteTypes/AdminRoute";
+import RedirectByRights from "./RouteTypes/RedirectByRights";
+
+function AppRoutes({ i18n, ...other }) {
   return (
     <>
       <div className="language-wrap">
@@ -16,8 +22,9 @@ function AppRoutes({ i18n }) {
         <Switch>
           <Route path="/login" render={props => <Login {...props} />} />
           <Route path="/register" render={props => <Register {...props} />} />
-          <Route path="/dashboard" component={DashboardRoutes} />
-          <Redirect exact from="/" to="/dashboard/device" />
+          <AdminRoute path="/dashboard/admin" component={AdminRoutes} />
+          <UserRoute path="/dashboard" component={DashboardRoutes} />
+          <RedirectByRights path="/" />
         </Switch>
       </Suspense>
     </>

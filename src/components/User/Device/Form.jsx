@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@material-ui/core";
 import { Trans } from "react-i18next";
 import { Formik, FastField } from "formik";
-import { CustomInput, Checkbox } from "../util/form";
+import { CustomInput, Checkbox } from "../../util/form";
 
 function DeviceForm({ values, onSubmit, btnText }) {
   return (

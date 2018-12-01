@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
 import { Trans } from "react-i18next";
-import { Device as DeviceRequests } from "../../services/API";
-import DashboardWrap from "../DashboardWrap";
+
+import { Device as DeviceRequests } from "services/API";
+import DashboardWrap from "components/DashboardWrap";
 import DeviceTable from "./DeviceTable";
 import "./Device.scss";
 

@@ -1,12 +1,25 @@
 import { lazy } from "react";
 
 import Header from "./Header";
-import DeviceAdd from "./Device/DeviceAdd";
-import DeviceEdit from "./Device/DeviceEdit";
-import LiveChart from "./LiveChart";
+import DeviceAdd from "./User/Device/DeviceAdd";
+import DeviceEdit from "./User/Device/DeviceEdit";
+import LiveChart from "./User/LiveChart";
+import OtherAnalytics from "./User/OtherAnalytics";
 
-const Device = lazy(() => import("./Device"));
+import UserControl from "./Admin/UserControl";
+
+const Device = lazy(() => import("./User/Device"));
 const Login = lazy(() => import("./Login"));
 const Register = lazy(() => import("./Register"));
 
-export { Device, Login, Register, Header, DeviceAdd, DeviceEdit, LiveChart };
+export {
+  Device,
+  Login,
+  Register,
+  Header,
+  DeviceAdd,
+  DeviceEdit,
+  LiveChart,
+  OtherAnalytics,
+  UserControl
+};

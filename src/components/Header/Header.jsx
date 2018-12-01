@@ -7,7 +7,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { localStorageApi } from "../../services";
 import HeaderView from "./Header.view";
 
-function Header({ history }) {
+function Header({ history, headerLinks }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   function onLogout() {
@@ -43,16 +43,13 @@ function Header({ history }) {
             horizontal: "right"
           }}
         >
-          <MenuItem>
-            <Link to="/dashboard/device">
-              <Trans>Device</Trans>
-            </Link>
-          </MenuItem>
-          <MenuItem>
-            <Link to="/dashboard/live-chart">
-              <Trans>Live Chart</Trans>
-            </Link>
-          </MenuItem>
+          {headerLinks.map((item, index) => (
+            <MenuItem key={index}>
+              <Link to={item.link}>
+                <Trans>{item.text}</Trans>
+              </Link>
+            </MenuItem>
+          ))}
           <MenuItem onClick={onLogout}>
             <Trans>Log out</Trans>
           </MenuItem>
