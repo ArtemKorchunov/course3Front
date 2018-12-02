@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Route, Redirect, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { translate } from "react-i18next";
 
 import DashboardRoutes from "./DashboardRoutes";
@@ -11,7 +11,7 @@ import UserRoute from "./RouteTypes/UserRoute";
 import AdminRoute from "./RouteTypes/AdminRoute";
 import RedirectByRights from "./RouteTypes/RedirectByRights";
 
-function AppRoutes({ i18n, ...other }) {
+function AppRoutes({ i18n }) {
   return (
     <>
       <div className="language-wrap">

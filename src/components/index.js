@@ -7,6 +7,7 @@ import LiveChart from "./User/LiveChart";
 import OtherAnalytics from "./User/OtherAnalytics";
 
 import UserControl from "./Admin/UserControl";
+import UserControlEdit from "./Admin/UserControl/UserEdit";
 
 const Device = lazy(() => import("./User/Device"));
 const Login = lazy(() => import("./Login"));
@@ -21,5 +22,6 @@ export {
   DeviceEdit,
   LiveChart,
   OtherAnalytics,
-  UserControl
+  UserControl,
+  UserControlEdit
 };

@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { Paper } from "@material-ui/core";
 
-import { Header, UserControl } from "../components";
+import { Header, UserControl, UserControlEdit } from "../components";
 
 const headerLinks = [
   {
@@ -20,7 +20,14 @@ function AdminRoutes() {
       />
       <div className="background device">
         <Paper className="device-content-bg">
-          <Route path="/dashboard/admin/user-control" component={UserControl} />
+          <Route
+            path="/dashboard/admin/user-control"
+            render={props => <UserControl {...props} />}
+          />
+          <Route
+            path="/dashboard/admin/user-control/edit/:id"
+            render={props => <UserControlEdit {...props} />}
+          />
         </Paper>
       </div>
     </>

@@ -83,3 +83,43 @@ export const Chart = {
     });
   }
 };
+
+export const User = {
+  get(page = 0, count = 5) {
+    return sendRequest(`user`, {
+      method: "GET",
+      params: {
+        page,
+        count
+      },
+      headers: {
+        Authorization: `Bearer ${localStorageApi.getItem("token")}`
+      }
+    });
+  },
+  getById(id) {
+    return sendRequest(`user/${id}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorageApi.getItem("token")}`
+      }
+    });
+  },
+  update(data, id) {
+    return sendRequest(`user/${id}`, {
+      method: "PUT",
+      data,
+      headers: {
+        Authorization: `Bearer ${localStorageApi.getItem("token")}`
+      }
+    });
+  },
+  delete(id) {
+    return sendRequest(`user/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${localStorageApi.getItem("token")}`
+      }
+    });
+  }
+};

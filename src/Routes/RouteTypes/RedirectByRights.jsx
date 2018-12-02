@@ -9,13 +9,13 @@ function RedirectByRights({ ...rest }) {
       {...rest}
       render={props => {
         return (
-          (localStorageApi.getItem("isAdmin") === undefined && (
+          (localStorageApi.getItem("admin") === undefined && (
             <Redirect to="/login" />
           )) ||
-          (localStorageApi.getItem("isAdmin") === "true" && (
+          (localStorageApi.getItem("admin") === "true" && (
             <Redirect to="/dashboard/admin/user-control" />
           )) ||
-          (localStorageApi.getItem("isAdmin") === "false" && (
+          (localStorageApi.getItem("admin") === "false" && (
             <Redirect to="/dashboard/device" />
           ))
         );

@@ -7,7 +7,7 @@ function UserRoute({ component: Component, routeProps = {}, ...rest }) {
     <Route
       {...rest}
       render={props => {
-        return localStorageApi.getItem("isAdmin") === "false" ? (
+        return localStorageApi.getItem("admin") === "false" ? (
           <Component {...props} {...routeProps} />
         ) : (
           <Redirect to="/login" />
