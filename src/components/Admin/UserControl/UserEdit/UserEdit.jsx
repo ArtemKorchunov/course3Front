@@ -37,7 +37,11 @@ function UserEdit({ history, match }) {
       onClose={onClose}
       formComponent={
         !!Object.keys(userValues).length && (
-          <Form values={userValues} btnText="Edit User" onSubmit={onSubmit} />
+          <Form
+            values={userValues}
+            btnText={<Trans>Edit User</Trans>}
+            onSubmit={onSubmit}
+          />
         )
       }
     />

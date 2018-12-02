@@ -65,7 +65,13 @@ function DeviceTable({
                         value="gilad"
                       />
                     }
-                    label={`${row.banned ? "banned" : "not banned"}`}
+                    label={
+                      row.banned ? (
+                        <Trans>Banned</Trans>
+                      ) : (
+                        <Trans>Not Banned</Trans>
+                      )
+                    }
                   />
                 </TableCell>
                 <TableCell numeric className="action-row">

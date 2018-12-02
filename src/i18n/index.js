@@ -25,7 +25,13 @@ i18n.use(LanguageDetector).init({
         Description: "Description",
         Status: "Status",
         "Select item to see Live Chart.": "Select item to see Chart.",
-        "Status is Active": "Status is Active"
+        "Status is Active": "Status is Active",
+        Banned: "Banned",
+        "User Control": "User Control",
+        "Edit User": "Edit User",
+        "Edit Device": "Edit Device",
+        "Not Banned": "Not Banned",
+        "Other Analytics": "Other Analytics"
       }
     },
     uk: {
@@ -50,7 +56,13 @@ i18n.use(LanguageDetector).init({
         Status: "Статус",
         "Select item to see Live Chart.":
           "Виберіть пункт, щоб побачити Діаграму.",
-        "Status is Active": "Статус активний"
+        "Status is Active": "Статус активний",
+        Banned: "Заблокованный",
+        "User Control": "Контроль Користувача",
+        "Edit User": "Редагувати Користувача",
+        "Edit Device": "Редагувати Девайс",
+        "Not Banned": "Не Заблокованый",
+        "Other Analytics": "Інша Аналітика"
       }
     }
   },

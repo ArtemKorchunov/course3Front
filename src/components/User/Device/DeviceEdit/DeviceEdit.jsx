@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useMount } from "react-use";
+import { Trans } from "react-i18next";
 
 import { Device as DeviceRequests } from "services/API";
 import { formErrorsWrap } from "components/util/form";
@@ -40,7 +41,7 @@ function DeviceEdit({ history, match }) {
         !!Object.keys(deviceValues).length && (
           <Form
             values={deviceValues}
-            btnText="Edit Device"
+            btnText={<Trans>Edit Device</Trans>}
             onSubmit={onSubmit}
           />
         )
