@@ -1,0 +1,19 @@
+version: "3"
+
+volumes:
+  database_data:
+    driver: local
+
+services:
+  ################################
+  #   Setup frontend container
+  ################################
+  frontend:
+    build: ./
+    expose:
+      - 5000
+    ports:
+      - 5000:80
+    volumes:
+      - ./src:/usr/src/app/src
+      - ./public:/usr/src/app/public
