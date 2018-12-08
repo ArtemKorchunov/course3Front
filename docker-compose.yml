@@ -11,9 +11,9 @@ services:
   frontend:
     build: ./
     expose:
-      - 5000
+      - 80
     ports:
-      - 5000:80
+      - 80:80
     volumes:
       - ./src:/usr/src/app/src
       - ./public:/usr/src/app/public
