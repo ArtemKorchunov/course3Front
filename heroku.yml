@@ -4,4 +4,4 @@ build:
   languages:
     - nodejs
 run:
-  web: docker-compose up
+  web: npm start
