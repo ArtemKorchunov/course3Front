@@ -87,12 +87,13 @@ function OtherAnalytics() {
       label: item.name
     }))
   );
+  console.log(monthStats, temperatureLevelStats);
+
   return (
-    console.log(monthStats, temperatureLevelStats);
     <DashboardWrap
       headlineTitle={<Trans>Other Analytics</Trans>}
       contentComponent={
-        !pickedSuggest.value || !monthStats || !temperatureLevelStats ? (
+        !pickedSuggest.value ? (
           <div className="content-wrap content-wrap__title content-wrap__center">
             <span className="title-overlay">
               <Trans>Select item to see Charts.</Trans>
@@ -104,7 +105,9 @@ function OtherAnalytics() {
               <Doughnut
                 data={{
                   ...data,
-                  datasets: [{ ...data.datasets, data: temperatureLevelStats }]
+                  datasets: [
+                    { ...data.datasets[0], data: temperatureLevelStats }
+                  ]
                 }}
                 width={400}
               />
@@ -113,7 +116,7 @@ function OtherAnalytics() {
               <HorizontalBar
                 data={{
                   ...dataH,
-                  datasets: [{ ...dataH.datasets, data: monthStats }]
+                  datasets: [{ ...dataH.datasets[0], data: monthStats }]
                 }}
               />
             </div>
