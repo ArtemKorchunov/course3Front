@@ -123,3 +123,28 @@ export const User = {
     });
   }
 };
+
+export const Stats = {
+  getMonthStats(device) {
+    return sendRequest(`statistic/month`, {
+      method: "GET",
+      params: {
+        device
+      },
+      headers: {
+        Authorization: `Bearer ${localStorageApi.getItem("token")}`
+      }
+    });
+  },
+  getTemperatureLevel(device) {
+    return sendRequest(`statistic/temperature-level`, {
+      method: "GET",
+      params: {
+        device
+      },
+      headers: {
+        Authorization: `Bearer ${localStorageApi.getItem("token")}`
+      }
+    });
+  }
+};

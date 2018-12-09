@@ -1,27 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Trans } from "react-i18next";
 import Select from "react-select";
 import { Doughnut, HorizontalBar } from "react-chartjs-2";
 
 import { useAsyncFilterResp } from "components/hooks";
-import { Device } from "services/API";
+import { Device, Stats } from "services/API";
 
 import DashboardWrap from "components/DashboardWrap";
 import "./OtherAnalytics.scss";
 
 const data = {
-  labels: ["Hot", "Cool", "Medium"],
+  labels: ["Cool", "Medium", "Hot"],
   datasets: [
     {
-      data: [300, 50, 100],
-      backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-      hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
+      data: [50, 100, 300],
+      backgroundColor: ["#36A2EB", "#FFCE56", "#FF6384"],
+      hoverBackgroundColor: ["#36A2EB", "#FFCE56", "#FF6384"]
     }
   ]
 };
 
 const dataH = {
-  labels: ["January", "February", "March", "April", "May", "June", "July"],
+  labels: [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ],
   datasets: [
     {
       label: "Report Number 1",
@@ -30,24 +43,56 @@ const dataH = {
       borderWidth: 1,
       hoverBackgroundColor: "rgba(255,99,132,0.4)",
       hoverBorderColor: "rgba(255,99,132,1)",
-      data: [65, 59, 80, 81, 56, 55, 40]
+      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     }
   ]
 };
 
 function OtherAnalytics() {
+  const [pickedSuggest, setPickedSuggest] = useState({ value: null });
+  const [monthStats, setMonthStats] = useState(null);
+  const [temperatureLevelStats, setTemperatureLevel] = useState(null);
+
+  async function getMonthStats(deviceId) {
+    const monthArray = [...dataH.datasets[0].data];
+
+    const {
+      data: { data: res }
+    } = await Stats.getMonthStats(deviceId);
+    for (let i = 0; i < res.length; i++) {
+      monthArray[res[i].month_id] = res[i].average;
+    }
+    setMonthStats(monthArray);
+  }
+  async function getTemperatureLevel(deviceId) {
+    const {
+      data: { data }
+    } = await Stats.getTemperatureLevel(deviceId);
+    setTemperatureLevel(Object.keys(data).map(key => data[key]));
+  }
+
+  useEffect(
+    () => {
+      if (pickedSuggest.value) {
+        getMonthStats(pickedSuggest.value);
+        getTemperatureLevel(pickedSuggest.value);
+      }
+    },
+    [pickedSuggest.value]
+  );
+
   const [options, loading] = useAsyncFilterResp(Device.get, [], value =>
     value.data.data.map(item => ({
       value: item.id,
       label: item.name
     }))
   );
-  const [pickedSuggest, setPickedSuggest] = useState({ value: null });
   return (
+    console.log(monthStats, temperatureLevelStats);
     <DashboardWrap
       headlineTitle={<Trans>Other Analytics</Trans>}
       contentComponent={
-        !pickedSuggest.value ? (
+        !pickedSuggest.value || !monthStats || !temperatureLevelStats ? (
           <div className="content-wrap content-wrap__title content-wrap__center">
             <span className="title-overlay">
               <Trans>Select item to see Charts.</Trans>
@@ -56,10 +101,21 @@ function OtherAnalytics() {
         ) : (
           <div className="analytics__wrap">
             <div className="analytic-item__wrap">
-              <Doughnut data={data} width={400} />
+              <Doughnut
+                data={{
+                  ...data,
+                  datasets: [{ ...data.datasets, data: temperatureLevelStats }]
+                }}
+                width={400}
+              />
             </div>
             <div className="analytic-item__wrap horizontal-bar">
-              <HorizontalBar data={dataH} />
+              <HorizontalBar
+                data={{
+                  ...dataH,
+                  datasets: [{ ...dataH.datasets, data: monthStats }]
+                }}
+              />
             </div>
           </div>
         )
