@@ -21,7 +21,6 @@ function LiveChart() {
   const message = useSocketConnect(
     `http://localhost:4000/device?token=${localStorageApi.getItem()}&device=${
       pickedSuggest.value
-    }
     }`,
     "/listen",
     pickedSuggest.value
