@@ -1,16 +1,18 @@
 import React from "react";
 import { Button } from "@material-ui/core";
 import { Trans } from "react-i18next";
-import { Formik, FastField } from "formik";
-import { CustomInput, Checkbox } from "../../util/form";
+import { Formik, FastField, Field } from "formik";
+import { CustomInput, CustomSelect, Checkbox } from "../../util/form";
 
-function DeviceForm({ values, onSubmit, btnText }) {
+function DeviceForm({ values, onSubmit, btnText, sensorOptions }) {
   return (
     <div className="form-wrap">
       <Formik
         initialValues={values}
         onSubmit={onSubmit}
         render={props => {
+          console.log(props.error);
+
           return (
             <form onSubmit={props.handleSubmit}>
               <FastField
@@ -26,6 +28,12 @@ function DeviceForm({ values, onSubmit, btnText }) {
                 multiline
                 rowsMax="4"
                 component={CustomInput}
+              />
+              <Field
+                label={'Sensors'}
+                name="sensors"
+                options={sensorOptions}
+                component={CustomSelect}
               />
               <Checkbox
                 name="status"

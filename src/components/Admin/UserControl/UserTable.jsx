@@ -45,7 +45,7 @@ function DeviceTable({
             <TableCell>
               <Trans>Banned</Trans>
             </TableCell>
-            <TableCell numeric />
+            <TableCell align="right" />
           </TableRow>
         </TableHead>
         <TableBody>
@@ -74,7 +74,7 @@ function DeviceTable({
                     }
                   />
                 </TableCell>
-                <TableCell numeric className="action-row">
+                <TableCell align="right" className="action-row">
                   <Button
                     mini
                     variant="fab"

@@ -7,6 +7,32 @@ import {
 } from "@material-ui/core";
 import { Field } from "formik";
 
+import Select from "react-select";
+
+export function CustomSelect({
+  field: { name, value },
+  form: { touched, errors, setFieldValue, setFieldTouched },
+  ...props // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+}) {
+  console.log(props.options);
+  return (
+    <div className="input-wrap p-t-b-20">
+      <Select
+        autoBlur
+        labelKey="name"
+        name={name}
+        onBlur={() => setFieldTouched(name, true)}
+        onChange={value => setFieldValue(name, value)}
+        options={props.options}
+        valueKey="value"
+        value={value}
+      />
+      {touched[name] &&
+        errors[name] && <div className="error">{errors[name]}</div>}
+    </div>
+  );
+}
+
 export function CustomInput({
   field, // { name, value, onChange, onBlur }
   form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
@@ -22,9 +48,8 @@ export function CustomInput({
         {...field}
         {...props}
       />
-      {touched[field.name] && errors[field.name] && (
-        <div className="error">{errors[field.name]}</div>
-      )}
+      {touched[field.name] &&
+        errors[field.name] && <div className="error">{errors[field.name]}</div>}
     </div>
   );
 }
@@ -63,7 +88,8 @@ export function Checkbox(props) {
 }
 
 export function formErrorsWrap(errorHandler, error) {
+  if (!error) return errorHandler("Oooops!");
   return typeof error.data === "string" || typeof error.data.data === "string"
     ? errorHandler({ general: error.data || error.data.data })
-    : errorHandler(error.data ? error.data : "Something went");
+    : errorHandler(error.data.data);
 }

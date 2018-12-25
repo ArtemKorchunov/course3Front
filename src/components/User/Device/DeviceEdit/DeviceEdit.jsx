@@ -12,7 +12,7 @@ function DeviceEdit({ history, match }) {
   useMount(() => {
     DeviceRequests.getById(match.params.id).then(res => {
       const { status, id, ...other } = res.data.data;
-      setDeviceValues({ ...other, status: status ? ["active"] : [] });
+      setDeviceValues({ ...other, status: status ? ["active"] : [], sensors: []});
     });
   });
   function onClose() {

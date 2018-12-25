@@ -26,13 +26,13 @@ async function sendRequest(path, opts = {}) {
       headers["Authorization"] = `Bearer ${token}`;
     }
   }
-
   try {
     return await axios(
       `${getRootUrl()}${path}`,
       Object.assign({ method: "POST" }, opts, { headers })
     );
   } catch (error) {
+    console.dir(error);
     throw error.response;
   }
 }

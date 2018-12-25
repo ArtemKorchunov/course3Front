@@ -6,16 +6,17 @@ import { formErrorsWrap } from "components/util/form";
 import DeviceDialog from "../DeviceDialog.view";
 import Form from "../Form";
 
-function DeviceAdd({ history }) {
-  const [deviceValues] = useState({ name: "", description: "", status: [] });
+function DeviceAdd({ history, location }) {
+  const [deviceValues] = useState({ name: "", description: "", status: [], sensors: null });
   function onClose() {
     history.push("/dashboard/device");
   }
   async function onSubmit(values, { setErrors }) {
     try {
-      const { status, ...other } = values;
+      const { status, sensors, ...other } = values;
       await DeviceRequests.create({
         ...other,
+        sensor_id: sensors.value,
         status: status.length ? true : false,
         charts: [1]
       });
@@ -30,6 +31,7 @@ function DeviceAdd({ history }) {
       formComponent={
         <Form
           values={deviceValues}
+          sensorOptions={location.state.sensors}
           btnText={<Trans>Add Device</Trans>}
           onSubmit={onSubmit}
         />

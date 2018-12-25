@@ -23,6 +23,11 @@ export function refreshToken(refreshToken, token) {
   });
 }
 
+export function getSensors() {
+  return sendRequest("iot/sensors", {
+    method: "GET"
+  });
+}
 // Device CRUD
 export const Device = {
   get(page = 0, count = 5) {

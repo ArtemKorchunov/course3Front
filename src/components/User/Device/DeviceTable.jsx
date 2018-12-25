@@ -37,7 +37,7 @@ function DeviceTable({ classes, rows, onEditBtnClick, onDeleteBtnClick }) {
             <TableCell>
               <Trans>Status</Trans>
             </TableCell>
-            <TableCell numeric />
+            <TableCell align="right" />
           </TableRow>
         </TableHead>
         <TableBody>
@@ -49,7 +49,7 @@ function DeviceTable({ classes, rows, onEditBtnClick, onDeleteBtnClick }) {
                 </TableCell>
                 <TableCell>{row.description}</TableCell>
                 <TableCell>{row.status ? "active" : "non active"}</TableCell>
-                <TableCell numeric className="action-row">
+                <TableCell align="right" className="action-row">
                   <Button
                     mini
                     variant="fab"
