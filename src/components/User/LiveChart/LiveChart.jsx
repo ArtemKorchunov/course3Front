@@ -4,6 +4,7 @@ import { Trans } from "react-i18next";
 import RTChart from "react-rt-chart";
 
 import { Device } from "../../../services/API";
+import getRootUrl from "../../../services/API/getRootUrl";
 import { localStorageApi } from "../../../services";
 
 import { useAsyncFilterResp, useSocketConnect } from "../../hooks";
@@ -19,7 +20,7 @@ function LiveChart() {
   );
   const [pickedSuggest, setPickedSuggest] = useState({ value: null });
   const message = useSocketConnect(
-    `http://localhost:4000/device?token=${localStorageApi.getItem()}&device=${
+    `${getRootUrl()}device?token=${localStorageApi.getItem()}&device=${
       pickedSuggest.value
     }`,
     "/listen",
