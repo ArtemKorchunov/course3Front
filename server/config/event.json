@@ -1,0 +1,13 @@
+[
+    "/",
+    "/login",
+    "/aboutus",
+    "/landing",
+    "/register",
+    "/messages",
+    "/messages/create",
+    "/panel",
+    "/profile",
+    "/password/:token",
+    "/send-email"
+]
