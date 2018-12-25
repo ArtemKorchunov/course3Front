@@ -22,8 +22,9 @@ export function CustomInput({
         {...field}
         {...props}
       />
-      {touched[field.name] &&
-        errors[field.name] && <div className="error">{errors[field.name]}</div>}
+      {touched[field.name] && errors[field.name] && (
+        <div className="error">{errors[field.name]}</div>
+      )}
     </div>
   );
 }
@@ -64,5 +65,5 @@ export function Checkbox(props) {
 export function formErrorsWrap(errorHandler, error) {
   return typeof error.data === "string" || typeof error.data.data === "string"
     ? errorHandler({ general: error.data || error.data.data })
-    : errorHandler(error.data.data);
+    : errorHandler(error.data ? error.data : "Something went");
 }
