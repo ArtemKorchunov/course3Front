@@ -29,7 +29,7 @@
     "typeface-roboto": "^0.0.54"
   },
   "scripts": {
-    "start": "react-scripts build & node ./server/app.js",
+    "start": "react-scripts build & yarn global add serve & serve build",
     "start:app": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
