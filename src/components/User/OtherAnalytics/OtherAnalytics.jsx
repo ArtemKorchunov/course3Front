@@ -60,7 +60,7 @@ function OtherAnalytics() {
       data: { data: res }
     } = await Stats.getMonthStats(deviceId);
     for (let i = 0; i < res.length; i++) {
-      monthArray[res[i].month_id] = res[i].average;
+      monthArray[res[i].month_id - 1] = res[i].average;
     }
     setMonthStats(monthArray);
   }
