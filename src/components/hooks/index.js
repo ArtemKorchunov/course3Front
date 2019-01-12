@@ -35,7 +35,7 @@ export const useSocketConnect = (url, path, valueCheck) => {
             setState({
               date: new Date(),
               Chart: data.heat,
-              Stability: data.prediction.pop()
+              Stability: Math.floor(data.prediction.pop() * 100)
             });
           });
         });
